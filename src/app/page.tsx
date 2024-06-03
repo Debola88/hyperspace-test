@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-4 items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex max-md:flex-col gap-4 px-5 items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold font-serif">Welcome</h1>
       <button
         onClick={openModal}
