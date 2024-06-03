@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 import { useRouter } from "next/navigation";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +15,11 @@ const Home: React.FC = () => {
   const navigateToAbout = () => {
     router.push("/effect");
   };
+
+  useEffect(() => {
+    AOS.init()
+  }, [])
+
 
   return (
     <div className="flex max-md:flex-col gap-4 px-5 items-center justify-center min-h-screen bg-gray-100">
@@ -30,8 +37,8 @@ const Home: React.FC = () => {
       >
         Effect page
       </button>
-
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <div className="transition-all duration-1000">
+        <Modal isOpen={isModalOpen} onClose={closeModal} >
         <h2 className="text-xl font-bold">Greetings</h2>
         <p className="mt-2">Hi, my name is Adebola</p>
         <button
@@ -41,6 +48,8 @@ const Home: React.FC = () => {
           Close Modal
         </button>
       </Modal>
+      </div>
+      
     </div>
   );
 };

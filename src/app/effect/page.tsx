@@ -3,10 +3,16 @@ import { useRouter } from 'next/navigation';
 import lottie from 'lottie-web';
 import animationData from '../assets/phone-animation.json'
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const Animation: React.FC = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    AOS.init()
+}, [])
 
   const navigateToHome = () => {
     router.push('/');
@@ -23,7 +29,7 @@ const Animation: React.FC = () => {
       >
         Go Back to Home Page
       </button>
-      <div className='max-w-[500px] h-[400px]'>
+      <div className='max-w-[500px] h-[400px]' data-aos="zoom-in-up" data-aos-duration="1500">
         <Lottie onComplete={() => {
         phoneRef.current?.setDirection(-1)
         phoneRef.current?.play()
